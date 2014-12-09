@@ -1,23 +1,32 @@
-
 Trie = function(){
   this.characters = {};
 };
 
 Trie.prototype.learn = function(word, index){
-  // This function should add the given word,
-  // starting from the given index,
-  // to this Trie.
 
-  // It will be recursive.  It will tell
-  // the correct child of this Trie to learn the word
-  // starting from a later index.
+  index = index || 0;
+  // once it has reached the length of the word
+  // it should add a property called isWord which should be set to true
+    // we're going to need this later when we find all the words
 
-  // Consider what the learn function should do
-  // when it reaches the end of the word?
-  // A word does not necessarily end at a leaf.
-  // You must mark nodes which are the ends of words,
-  // so that the words can be reconstructed later.
+  if(index === word.length){
+    this.isWord = true;
+  }
+  // otherwise we s tart building the Trie
+  else if(index < word.length){
+    // set a variable equal to the character that we are at
+    var char = word[index];
+    // create another trie which will either have that character
+    // or be a new instance of the Trie (don't want dupes!)
+    var subTrie = this.characters[char] || new Trie();
+    // tell this subtrie to learn the next word and move to the next letter
+    subTrie.learn(word, index+1);
+    this.characters[char] = subTrie;
+
+  }
+  return this;
 };
+
 
 Trie.prototype.getWords = function(words, currentWord){
   // This function will return all the words which are
@@ -34,7 +43,7 @@ Trie.prototype.find = function(word, index){
 };
 
 Trie.prototype.autoComplete = function(prefix){
-  // This function will return all completions 
+  // This function will return all completions
   // for a given prefix.
   // It should use find and getWords.
 };
