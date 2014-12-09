@@ -33,19 +33,24 @@ Trie.prototype.getWords = function(words, currentWord){
   // contained in this Trie.
   // it will use currentWord as a prefix,
   // since a Trie doesn't know about its parents.
+
+  // so where to start?
 };
 
 Trie.prototype.find = function(word, index){
   // This function will return the node in the trie
   // which corresponds to the end of the passed in word.
-
   // Be sure to consider what happens if the word is not in this Trie.
+
+  // so where to start?
 };
 
 Trie.prototype.autoComplete = function(prefix){
   // This function will return all completions
   // for a given prefix.
   // It should use find and getWords.
+
+  // so where to start?
 };
 
 try{
